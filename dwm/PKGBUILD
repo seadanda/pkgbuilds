@@ -1,0 +1,36 @@
+# Maintainer: Dónal Murray <donal.murray@cern.ch>
+
+pkgname=dwm
+_pkgname=dwm
+pkgver=6.1.dccbfca
+pkgrel=1
+pkgdesc='A dynamic window manager for X'
+url='https://github.com/seadanda/dwm'
+arch=('i686' 'x86_64')
+license=('MIT')
+options=(zipman)
+provides=('dwm')
+conflicts=('dwm')
+makedepends=('git')
+depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'noto-fonts' 'dmenu'
+         'playerctl' 'xorg-xbacklight' 'slstatus' 'slock' 'termite')
+
+source=("git+https://github.com/seadanda/${_pkgname}")
+md5sums=('SKIP')
+
+prepare() {
+    echo 'Edit config.h'
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+  make X11INC='/usr/include/X11' X11LIB='/usr/lib/X11'
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}"
+  make DESTDIR="${pkgdir}" PREFIX='/usr/' install
+  install -m644 -D LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -m644 -D README "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  install -m644 -D dwm.desktop "${pkgdir}/usr/share/xsessions/dwm.desktop"
+}

@@ -1,0 +1,33 @@
+# Maintainer: Dónal Murray <donal.murray@cern.ch>
+
+pkgname=slstatus
+_pkgname=slstatus
+pkgver=6.1.6b85a87
+pkgrel=1
+pkgdesc='A status monitor for window managers'
+url='http://github.com/seadanda/slstatus'
+arch=('i686' 'x86_64')
+license=('custom:ISC')
+provides=('slstatus')
+conflicts=('slstatus-git')
+makedepends=('git')
+depends=('libx11')
+
+source=("git+https://github.com/seadanda/${_pkgname}")
+md5sums=('SKIP')
+
+prepare() {
+    echo 'Edit config.h'
+}
+
+build() {
+    cd "${srcdir}/${_pkgname}"
+    make X11INC='/usr/include/X11' X11LIB='/usr/lib/X11'
+}
+
+package() {
+    cd "${srcdir}/${_pkgname}"
+    make DESTDIR="${pkgdir}" PREFIX='/usr/' install
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+}
