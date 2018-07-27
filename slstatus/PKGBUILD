@@ -1,11 +1,11 @@
 # Maintainer: Dónal Murray <donal.murray@cern.ch>
 
-pkgname=slstatus
+pkgname=slstatus-seadanda
 _pkgname=slstatus
 pkgver=6.1.6b85a87
 pkgrel=1
 pkgdesc='A status monitor for window managers'
-url='http://github.com/seadanda/slstatus'
+url='https://tools.suckless.org/slstatus'
 arch=('i686' 'x86_64')
 license=('custom:ISC')
 provides=('slstatus')
