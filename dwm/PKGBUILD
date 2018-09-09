@@ -2,7 +2,7 @@
 
 pkgname=dwm-seadanda
 _pkgname=dwm
-pkgver=6.1.c0ca740
+pkgver=6.1.e910450
 pkgrel=1
 pkgdesc='A dynamic window manager for X'
 url='https://dwm.suckless.org'
