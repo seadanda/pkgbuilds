@@ -51,6 +51,7 @@ package() {
 
     # Fix broken vsim deps
     sed -i "s,linux_rh60,linux,g" "${pkgdir}${_alteradir}/modelsim_ae/bin/vsim"
+    ln -s "${pkgdir}${alteradir}/modelsim_ae/linux" "${pkgdir}${alteradir}/modelsim_ae/bin/linux_x86_64"
 
     # Fix broken font support
     cp -rf "${pkgname}/lib32" "${pkgdir}${_alteradir}/lib32"
