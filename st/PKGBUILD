@@ -2,7 +2,7 @@
 
 pkgname=st-seadanda
 _pkgname=st
-pkgver=0.8.1.13.67a8590
+pkgver=0.8.1.13.09e539f
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X'
 url='https://st.suckless.org'
