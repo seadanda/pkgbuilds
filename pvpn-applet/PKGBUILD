@@ -11,7 +11,7 @@ makedepends=('git')
 depends=('python' 'libnotify' 'python-pyqt5' 'protonvpn-cli')
 
 source=("https://github.com/seadanda/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('b042c8482e2dc27e5e5848e8ec0e5952')
 
 prepare() {
     tar xzf ${pkgver}.tar.gz
