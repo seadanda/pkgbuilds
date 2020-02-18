@@ -1,0 +1,31 @@
+# Maintainer: Dónal Murray <donal.murray@cern.ch>
+
+pkgname=lhcb-daq40-software
+pkgver=6.0.2
+pkgrel=0
+pkgdesc='Software for daq40 system for lhcb upgrade'
+url='https://gitlab.cern.ch/lhcb-daq40/lhcb-daq40-software'
+arch=('x86_64')
+makedepends=('git')
+
+source=("git+ssh://git@gitlab.cern.ch:7999/lhcb-daq40/lhcb-daq40-software.git")
+md5sums=('SKIP')
+
+build() {
+    cd "${srcdir}/${pkgname}"
+    git checkout devel-velo
+    sed -i 's/ENABLE_DIM ?=true/ENABLE_DIM ?=false/' common/flags.mk
+    cd "pcie40_simchecker"
+    make
+    cd "../pcie40_simreader"
+    make
+    cd "../daq40_txtparser"
+    make
+}
+
+package() {
+    cd "${srcdir}/${pkgname}"
+    install -Dm755 -D pcie40_simchecker/pcie40_simchecker ${pkgdir}/usr/bin/pcie40_simchecker
+    install -Dm755 -D pcie40_simreader/pcie40_simreader ${pkgdir}/usr/bin/pcie40_simreader
+    install -Dm755 -D daq40_txtparser/daq40_txtparser ${pkgdir}/usr/bin/daq40_txtparser
+}
