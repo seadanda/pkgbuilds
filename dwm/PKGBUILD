@@ -2,8 +2,8 @@
 
 pkgname=dwm-seadanda
 _pkgname=dwm
-pkgver=6.1.4c104ab
-pkgrel=2
+pkgver=6.1.7f62980
+pkgrel=1
 pkgdesc='A dynamic window manager for X'
 url='https://dwm.suckless.org'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('dwm')
 conflicts=('dwm')
 makedepends=('git')
 depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'noto-fonts' 'dmenu'
-         'playerctl' 'xorg-xbacklight' 'slock' 'st')
+         'playerctl' 'xorg-xbacklight' 'i3lock-fancy-dualmonitor' 'st')
 
 source=("git+https://github.com/seadanda/${_pkgname}")
 md5sums=('SKIP')
