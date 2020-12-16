@@ -1,8 +1,8 @@
 # Maintainer: Dónal Murray <donal.murray@cern.ch>
 
 pkgname=dwm-seadanda
-_pkgname=dwm
-pkgver=6.1.7f62980
+_pkgname=dwm-polybar
+pkgver=6.2.1
 pkgrel=1
 pkgdesc='A dynamic window manager for X'
 url='https://dwm.suckless.org'
@@ -13,7 +13,8 @@ provides=('dwm')
 conflicts=('dwm')
 makedepends=('git')
 depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'noto-fonts' 'dmenu'
-         'playerctl' 'xorg-xbacklight' 'i3lock-fancy-dualmonitor' 'st')
+         'playerctl' 'xorg-xbacklight' 'i3lock-fancy-dualmonitor' 'alacritty'
+         'polybar-dwm-module')
 
 source=("git+https://github.com/seadanda/${_pkgname}")
 md5sums=('SKIP')
