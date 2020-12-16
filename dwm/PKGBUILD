@@ -2,7 +2,7 @@
 
 pkgname=dwm-seadanda
 _pkgname=dwm-polybar
-pkgver=6.2.1
+pkgver=6.2.2
 pkgrel=1
 pkgdesc='A dynamic window manager for X'
 url='https://dwm.suckless.org'
@@ -11,27 +11,26 @@ license=('MIT')
 options=(zipman)
 provides=('dwm')
 conflicts=('dwm')
-makedepends=('git')
 depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'noto-fonts' 'dmenu'
-         'playerctl' 'xorg-xbacklight' 'i3lock-fancy-dualmonitor' 'alacritty'
+         'playerctl' 'xorg-xbacklight' 'i3lock-fancy-dualmonitors' 'alacritty'
          'polybar-dwm-module')
 
-source=("git+https://github.com/seadanda/${_pkgname}")
-md5sums=('SKIP')
+source=("https://github.com/seadanda/${_pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('4a5813f87f9dd0c2fac672bc7ff40c18')
 
 prepare() {
-    echo 'Edit config.h'
+    tar xzf ${pkgver}.tar.gz
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make X11INC='/usr/include/X11' X11LIB='/usr/lib/X11'
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" PREFIX='/usr/' install
   install -m644 -D LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -m644 -D README "${pkgdir}/usr/share/doc/${_pkgname}/README"
-  install -m644 -D dwm.desktop "${pkgdir}/usr/share/xsessions/dwm.desktop"
+  # install -m644 -D dwm.desktop "${pkgdir}/usr/share/xsessions/dwm.desktop"
 }
