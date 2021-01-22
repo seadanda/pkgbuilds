@@ -2,7 +2,7 @@
 
 pkgname=dwm-seadanda
 _pkgname=dwm-polybar
-pkgver=6.2.2
+pkgver=6.2.3
 pkgrel=1
 pkgdesc='A dynamic window manager for X'
 url='https://dwm.suckless.org'
@@ -16,7 +16,7 @@ depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'noto-fonts' 'dmenu'
          'polybar-dwm-module')
 
 source=("https://github.com/seadanda/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('4a5813f87f9dd0c2fac672bc7ff40c18')
+md5sums=('a26ce9b6fc50efe4b1afeddb25aad075')
 
 prepare() {
     tar xzf ${pkgver}.tar.gz
