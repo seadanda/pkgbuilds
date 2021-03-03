@@ -1,0 +1,23 @@
+# Maintainer: Dónal Murray <donal.murray@cern.ch>
+
+pkgname=uom-openvpn
+pkgver=1.1
+pkgrel=1
+pkgdesc='VPN profiles and certs for University of Manchester global protect'
+arch=('x86_64')
+url='https://www.itservices.manchester.ac.uk/ourservices/popular/vpn/'
+license=('unknown')
+depends=('openvpn')
+source=("http://linux.its.manchester.ac.uk/pub/$pkgname.tar.gz")
+sha256sums=('380af08940de803cf8ea8965b7107ad9d4ba4ae6a818aa010340eb87fdcc6609')
+
+package() {
+    mkdir -p "$pkgdir/opt/uom-openvpn"
+    install -Dm0644 "$srcdir/$pkgname-$pkgver/ca.crt" "$pkgdir/opt/uom-openvpn/ca.crt"
+    install -Dm0644 "$srcdir/$pkgname-$pkgver/linux-vpn-client.crt" "$pkgdir/opt/uom-openvpn/linux-vpn-client.crt"
+    install -Dm0644 "$srcdir/$pkgname-$pkgver/linux-vpn-client.key" "$pkgdir/opt/uom-openvpn/linux-vpn-client.key"
+    install -Dm0644 "$srcdir/$pkgname-$pkgver/ta.key" "$pkgdir/opt/uom-openvpn/ta.key"
+    install -Dm0644 "$srcdir/$pkgname-$pkgver/UoM_Enhanced_User.conf" "$pkgdir/opt/uom-openvpn/UoM_Enhanced_User.conf"
+    install -Dm0644 "$srcdir/$pkgname-$pkgver/UoM_Enhanced_User_OnCampus.conf" "$pkgdir/opt/uom-openvpn/UoM_Enhanced_User_OnCampus.conf"
+    install -Dm0644 "$srcdir/$pkgname-$pkgver/UoM_Standard_User.conf" "$pkgdir/opt/uom-openvpn/UoM_Standard_User.conf"
+}
